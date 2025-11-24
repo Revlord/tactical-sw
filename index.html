@@ -947,277 +947,285 @@
             background: rgba(60, 30, 30, 0.4);
         }
 
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.4em;
-            }
-
-            .header {
-                padding: 30px 20px 25px;
-            }
-            
-            .stopwatch-display {
-                font-size: 3.5em;
-                margin: 40px 0;
-            }
-
-            .tab-content {
-                padding: 30px 20px;
-            }
-
-            .tabs {
-                padding: 0 20px;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-
-            .tab {
-                padding: 16px 20px;
-                font-size: 0.75em;
-                white-space: nowrap;
-            }
-
-            .stat-card {
-                padding: 24px 30px;
-                border-right: none;
-                border-bottom: 1px solid rgba(40, 80, 120, 0.12);
-            }
-
-            .stat-card:last-child {
-                border-bottom: none;
-            }
-            
-            .button-group {
-                flex-direction: column;
-            }
-            
-            button {
-                width: 100%;
-            }
-
-            /* Sessions Section Mobile Styles */
-            .session-filters {
-                padding: 20px 15px !important;
-            }
-
-            .session-filters > div:first-child {
-                grid-template-columns: 1fr !important;
-                gap: 15px !important;
-            }
-
-            .session-filters > div:last-child {
-                flex-direction: column;
-                gap: 10px;
-                align-items: stretch !important;
-            }
-
-            .session-filters button {
-                width: 100%;
-                padding: 12px 20px !important;
-            }
-
-            .session-filters #sessionCount {
-                margin-left: 0 !important;
-                text-align: center;
-                padding: 8px 0;
-            }
-
-            .session-list {
-                max-height: none;
-                padding-right: 0;
-            }
-
-            .session-item {
-                padding: 18px 20px;
-                margin-bottom: 8px;
-            }
-
-            .session-item::after {
-                right: 20px;
-                font-size: 0.7em;
-            }
-
-            .session-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 8px;
-            }
-
-            .session-name {
-                font-size: 1em;
-                padding-right: 30px;
-            }
-
-            .session-duration {
-                font-size: 1.4em;
-            }
-
-            .session-date {
-                font-size: 0.75em;
-            }
-
-            /* Modal Mobile Styles */
-            .session-modal {
-                padding: 0;
-            }
-
-            .modal-content {
-                margin: 0;
-                max-width: 100%;
-                min-height: 100vh;
-                border: none;
-            }
-
-            .modal-header {
-                padding: 20px;
-                flex-wrap: wrap;
-                gap: 15px;
-            }
-
-            .modal-title {
-                font-size: 1.1em;
-                flex: 1 1 100%;
-            }
-
-            .modal-close {
-                flex: 1 1 100%;
-                padding: 10px 20px;
-            }
-
-            .session-details-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .detail-section {
-                padding: 20px;
-                border-right: none !important;
-            }
-
-            .detail-section:not(:last-child) {
-                border-bottom: 1px solid rgba(40, 80, 120, 0.15) !important;
-            }
-
-            .detail-value {
-                font-size: 1.5em;
-            }
-
-            .map-container {
-                height: 250px;
-            }
-
-            .analytics-panel {
-                padding: 20px;
-            }
-
-            .analytics-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .actions-panel {
-                padding: 20px;
-                flex-direction: column;
-            }
-
-            .action-btn {
-                width: 100%;
-                padding: 14px 24px;
-            }
-
-            .notes-section {
-                padding: 20px;
-            }
-
-            .notes-input {
-                min-height: 120px;
-            }
-
-            .tags-container {
-                gap: 6px;
-            }
-
-            .tag {
-                font-size: 0.7em;
-                padding: 5px 10px;
-            }
-
-            .weather-info {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-
-            .empty-state {
-                padding: 60px 20px;
-            }
-
-            .empty-state-icon {
-                font-size: 2.5em;
-            }
-
-            .notification {
-                top: 15px;
-                right: 15px;
-                left: 15px;
-                max-width: none;
-                padding: 15px 20px;
-                font-size: 0.85em;
-            }
-
-            .settings-section {
-                margin-bottom: 40px;
-            }
-
-            .settings-section h3 {
-                font-size: 0.8em;
-            }
+        /* Performance Analytics Styles */
+        .metrics-collection-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.2s ease;
         }
 
-        @media (max-width: 480px) {
-            .header h1 {
-                font-size: 1.2em;
+        .metrics-content {
+            background: linear-gradient(180deg, rgba(8, 18, 28, 0.98) 0%, rgba(5, 12, 20, 0.95) 100%);
+            border: 1px solid rgba(40, 80, 120, 0.3);
+            padding: 40px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .metric-input-group {
+            margin-bottom: 20px;
+        }
+
+        .metric-input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #4a5c6e;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.65em;
+            font-weight: 600;
+        }
+
+        .metric-input-group input[type="range"] {
+            width: calc(100% - 40px);
+            margin-right: 10px;
+        }
+
+        .metric-input-group .range-value {
+            color: #8fa8c0;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .metric-input-group select,
+        .metric-input-group input[type="number"],
+        .metric-input-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(10, 20, 30, 0.5);
+            border: 1px solid rgba(40, 80, 120, 0.2);
+            color: #8fa8c0;
+            font-size: 0.9em;
+        }
+
+        .metric-input-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        /* === Performance Analytics – Palantir-style, no gaming === */
+
+        .performance-charts {
+            margin-top: 18px;
+            padding: 24px 24px 20px;
+            background: rgba(4, 10, 16, 0.95);
+            border: 1px solid rgba(80, 120, 150, 0.5);
+            border-radius: 0;
+        }
+
+        .perf-layout {
+            display: grid;
+            grid-template-columns: 220px minmax(0, 1fr) 220px;
+            gap: 24px;
+            align-items: flex-start;
+        }
+
+        /* Left: overall summary */
+
+        .perf-summary {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border-right: 1px solid rgba(60, 90, 120, 0.5);
+            padding-right: 18px;
+        }
+
+        .perf-label {
+            font-size: 0.7em;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: #526375;
+            font-weight: 400;
+        }
+
+        .perf-overall {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 2.6em;
+            font-weight: 300;
+            color: #c4d1dd;
+            letter-spacing: -0.03em;
+        }
+
+        .perf-grade {
+            font-size: 0.8em;
+            color: #7a8a99;
+        }
+
+        .perf-grade span {
+            display: inline-block;
+            padding: 3px 8px;
+            margin-left: 6px;
+            border: 1px solid rgba(120, 160, 190, 0.7);
+            border-radius: 2px;
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 300;
+            font-size: 0.85em;
+            letter-spacing: 0.06em;
+        }
+
+        /* Center: efficiency / focus / stamina */
+
+        .perf-metrics {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            padding: 0 18px;
+            border-right: 1px solid rgba(60, 90, 120, 0.5);
+        }
+
+        .perf-metric-row {
+            display: grid;
+            grid-template-columns: 110px minmax(0, 1fr) 44px;
+            column-gap: 10px;
+            row-gap: 4px;
+            align-items: center;
+        }
+
+        .perf-metric-label {
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 0.13em;
+            color: #5f7284;
+            font-weight: 400;
+        }
+
+        .perf-metric-value {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9em;
+            color: #aab8c8;
+            text-align: right;
+            font-weight: 300;
+        }
+
+        .perf-progress-track {
+            grid-column: 2 / 4;
+            height: 4px;
+            background: rgba(5, 12, 20, 0.9);
+            border: 1px solid rgba(70, 120, 160, 0.4);
+            overflow: hidden;
+        }
+
+        .perf-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4c7aa5, #7ea6cc);
+            width: 0;
+        }
+
+        /* Right: mission stats block */
+
+        .perf-mission {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .perf-mission-title {
+            font-size: 0.7em;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: #526375;
+            font-weight: 400;
+        }
+
+        .perf-mission-list {
+            display: grid;
+            gap: 10px;
+            padding-top: 6px;
+            border-top: 1px solid rgba(60, 90, 120, 0.5);
+        }
+
+        .perf-mission-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .perf-mission-label {
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #5f7284;
+            font-weight: 400;
+        }
+
+        .perf-mission-value {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1em;
+            color: #c4d1dd;
+            font-weight: 300;
+        }
+
+        .perf-mission-muted {
+            font-size: 0.75em;
+            color: #5f6b7a;
+        }
+
+        /* AI insights block */
+
+        .ai-insights {
+            margin-top: 18px;
+            padding: 16px 18px;
+            background: rgba(8, 16, 24, 0.9);
+            border-left: 2px solid rgba(80, 120, 150, 0.7);
+        }
+
+        .insights-title {
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: #7fa0c0;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        .insights-content,
+        .ai-content {
+            font-size: 0.88em;
+            line-height: 1.6;
+            color: #9ba8b7;
+            white-space: pre-wrap;
+            font-weight: 300;
+        }
+
+        /* Mobile / tablet */
+
+        @media (max-width: 900px) {
+            .perf-layout {
+                grid-template-columns: 1fr;
+                row-gap: 18px;
             }
 
-            .header .tagline {
-                font-size: 0.55em;
+            .perf-summary {
+                border-right: none;
+                padding-right: 0;
+                border-bottom: 1px solid rgba(60, 90, 120, 0.5);
+                padding-bottom: 16px;
             }
 
-            .stopwatch-display {
-                font-size: 2.5em;
-                margin: 30px 0;
+            .perf-metrics {
+                border-right: none;
+                padding: 12px 0 16px;
+                border-bottom: 1px solid rgba(60, 90, 120, 0.5);
             }
 
-            .stat-value {
-                font-size: 1.8em;
-            }
-
-            .stat-label {
-                font-size: 0.6em;
-            }
-
-            .tab {
-                padding: 14px 16px;
-                font-size: 0.7em;
-            }
-
-            .session-item {
-                padding: 15px 18px;
-            }
-
-            .session-duration {
-                font-size: 1.2em;
-            }
-
-            .detail-value {
-                font-size: 1.3em;
-            }
-
-            .modal-title {
-                font-size: 1em;
-            }
-
-            .metric-value {
-                font-size: 1.4em;
+            .perf-metric-row {
+                grid-template-columns: 90px minmax(0, 1fr) 40px;
             }
         }
     </style>
@@ -1358,6 +1366,7 @@
         </div>
     </div>
 
+    <script src="analytics.js"></script>
     <script>
         class TacticalStopwatch {
             constructor() {
@@ -1421,7 +1430,7 @@
                 document.getElementById(tabName).classList.add('active');
             }
 
-            start() {
+            async start() {
                 if (!this.isRunning) {
                     // Check if operator name is provided
                     if (!this.operatorNameInput.value.trim()) {
@@ -1433,6 +1442,16 @@
                     
                     // Disable operator name input once session starts
                     this.operatorNameInput.disabled = true;
+                    
+                    // Capture location at start
+                    this.currentSessionLocation = null;
+                    try {
+                        this.currentSessionLocation = await locationServices.captureLocation();
+                        this.showNotification('Location captured successfully');
+                    } catch (error) {
+                        console.error('Failed to capture location:', error);
+                        this.showNotification('Location capture failed - continuing without location');
+                    }
                     
                     this.startTime = Date.now() - this.elapsedTime;
                     this.timerInterval = setInterval(() => this.updateDisplay(), 10);
@@ -1498,6 +1517,7 @@
                     name: this.taskNameInput.value || 'Unnamed Task',
                     duration: this.elapsedTime,
                     date: new Date().toISOString(),
+                    location: this.currentSessionLocation || null,
                     archived: false
                 };
 
@@ -1506,6 +1526,11 @@
                 this.updateStats();
                 this.renderSessions();
                 this.updateOperatorFilter();
+                
+                // Prompt for performance metrics
+                setTimeout(() => {
+                    analytics.collectSessionMetrics(session.id);
+                }, 500);
                 
                 // Reset for next session
                 this.reset();
@@ -1596,22 +1621,27 @@
             }
 
             openSessionModal(sessionId) {
-                const session = this.sessions.find(s => s.id === sessionId);
-                if (!session) return;
+                try {
+                    console.log('Opening modal for session:', sessionId);
+                    const session = this.sessions.find(s => s.id === sessionId);
+                    if (!session) {
+                        console.error('Session not found:', sessionId);
+                        return;
+                    }
 
-                // Create or update modal
-                let modal = document.getElementById('sessionModal');
-                if (!modal) {
-                    modal = document.createElement('div');
-                    modal.id = 'sessionModal';
-                    modal.className = 'session-modal';
-                    document.body.appendChild(modal);
-                }
+                    // Create or update modal
+                    let modal = document.getElementById('sessionModal');
+                    if (!modal) {
+                        modal = document.createElement('div');
+                        modal.id = 'sessionModal';
+                        modal.className = 'session-modal';
+                        document.body.appendChild(modal);
+                    }
 
                 // Calculate analytics
                 const analytics = this.calculateSessionAnalytics(session);
                 const locationData = session.location || {};
-                const weatherData = session.weather || {};
+                const weatherData = locationData.weather || {};
                 const notes = session.notes || '';
                 const tags = session.tags || [];
 
@@ -1675,38 +1705,125 @@
                                         <div class="weather-info">
                                             <div class="weather-icon">${this.getWeatherIcon(weatherData.condition)}</div>
                                             <div class="weather-details">
-                                                <div class="weather-temp">${weatherData.temp}°${weatherData.unit || 'C'}</div>
+                                                <div class="weather-temp">${weatherData.temp}°${weatherData.unit || 'F'}</div>
                                                 <div class="weather-desc">${weatherData.condition || 'Clear'}</div>
+                                                ${weatherData.windSpeed ? `<div class="weather-desc" style="font-size: 0.8em; margin-top: 5px;">Wind: ${weatherData.windSpeed} mph</div>` : ''}
                                             </div>
                                         </div>
                                     ` : `
-                                        <button class="action-btn" onclick="app.addWeatherData(${sessionId})">ADD WEATHER</button>
-                                        <div class="detail-subtitle" style="margin-top: 10px;">No weather data recorded</div>
+                                        <div class="detail-subtitle" style="margin-top: 10px;">Weather captured automatically with location</div>
                                     `}
                                 </div>
                             </div>
                             
                             <div class="analytics-panel">
                                 <div class="section-title">PERFORMANCE ANALYTICS</div>
-                                <div class="analytics-grid">
-                                    <div class="metric-card">
-                                        <div class="metric-label">Average Pace</div>
-                                        <div class="metric-value">${analytics.avgPace}</div>
-                                    </div>
-                                    <div class="metric-card">
-                                        <div class="metric-label">Productivity Score</div>
-                                        <div class="metric-value">${analytics.productivityScore}%</div>
-                                    </div>
-                                    <div class="metric-card">
-                                        <div class="metric-label">Time of Day</div>
-                                        <div class="metric-value">${analytics.timeOfDay}</div>
-                                    </div>
-                                    <div class="metric-card">
-                                        <div class="metric-label">Session Rank</div>
-                                        <div class="metric-value">#${analytics.rank}</div>
-                                    </div>
+                                <div id="performance-container-${sessionId}">
+                                    ${session.performanceScores ? `
+                                        <div class="performance-charts">
+                                            <div class="perf-layout">
+                                                
+                                                <!-- Left: overall -->
+                                                <div class="perf-summary">
+                                                    <div class="perf-label">Overall</div>
+                                                    <div class="perf-overall">${session.performanceScores.overall}%</div>
+                                                    <div class="perf-grade">
+                                                        Grade <span>${session.performanceScores.grade}</span>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Center: efficiency / focus / stamina -->
+                                                <div class="perf-metrics">
+                                                    <div class="perf-metric-row">
+                                                        <div class="perf-metric-label">Efficiency</div>
+                                                        <div class="perf-metric-value">
+                                                            ${session.performanceScores.efficiency}%
+                                                        </div>
+                                                        <div class="perf-progress-track">
+                                                            <div class="perf-progress-fill"
+                                                                style="width: ${session.performanceScores.efficiency}%;"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="perf-metric-row">
+                                                        <div class="perf-metric-label">Focus</div>
+                                                        <div class="perf-metric-value">
+                                                            ${session.performanceScores.focus}%
+                                                        </div>
+                                                        <div class="perf-progress-track">
+                                                            <div class="perf-progress-fill"
+                                                                style="width: ${session.performanceScores.focus}%;"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="perf-metric-row">
+                                                        <div class="perf-metric-label">Stamina</div>
+                                                        <div class="perf-metric-value">
+                                                            ${session.performanceScores.stamina}%
+                                                        </div>
+                                                        <div class="perf-progress-track">
+                                                            <div class="perf-progress-fill"
+                                                                style="width: ${session.performanceScores.stamina}%;"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Right: mission stats / context -->
+                                                <div class="perf-mission">
+                                                    <div class="perf-mission-title">Mission Stats</div>
+                                                    <div class="perf-mission-list">
+                                                        <div class="perf-mission-row">
+                                                            <span class="perf-mission-label">Tasks Completed</span>
+                                                            <span class="perf-mission-value">
+                                                                ${session.metrics?.tasksCompleted ?? 0}
+                                                            </span>
+                                                        </div>
+                                                        <div class="perf-mission-row">
+                                                            <span class="perf-mission-label">Interruptions</span>
+                                                            <span class="perf-mission-value">
+                                                                ${session.metrics?.interruptions ?? 0}
+                                                            </span>
+                                                        </div>
+                                                        <div class="perf-mission-row">
+                                                            <span class="perf-mission-label">Complexity</span>
+                                                            <span class="perf-mission-value">
+                                                                ${session.metrics?.complexity ?? 0}
+                                                                <span class="perf-mission-muted">/10</span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="perf-mission-row">
+                                                            <span class="perf-mission-label">Category</span>
+                                                            <span class="perf-mission-value">
+                                                                ${(session.metrics?.category || 'Unspecified')}
+                                                            </span>
+                                                        </div>
+                                                        <div class="perf-mission-row">
+                                                            <span class="perf-mission-label">Energy</span>
+                                                            <span class="perf-mission-value">
+                                                                ${(session.metrics?.energyStart || '—')} 
+                                                                <span class="perf-mission-muted">→</span>
+                                                                ${(session.metrics?.energyEnd || '—')}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    ` : `
+                                        <div style="text-align:center; padding:32px 12px;">
+                                            <button class="action-btn primary"
+                                                    onclick="analytics.collectSessionMetrics(${sessionId})">
+                                                Collect performance metrics
+                                            </button>
+                                            <div class="detail-subtitle" style="margin-top:12px;">
+                                                No performance data recorded for this session.
+                                            </div>
+                                        </div>
+                                    `}
                                 </div>
                             </div>
+
                             
                             <div class="notes-section">
                                 <div class="section-title">SESSION NOTES</div>
@@ -1744,7 +1861,20 @@
                 
                 // Initialize map if location exists
                 if (locationData.latitude) {
-                    this.initializeMap(sessionId, locationData);
+                    setTimeout(() => {
+                        locationServices.renderMap(`map-${sessionId}`, locationData);
+                    }, 100);
+                }
+                
+                // Draw performance charts if available
+                if (session.performanceScores) {
+                    setTimeout(() => {
+                        analytics.drawRadarChart(sessionId);
+                    }, 100);
+                }
+                } catch (error) {
+                    console.error('Error opening session modal:', error);
+                    this.showNotification('Error opening session details');
                 }
             }
 
@@ -1926,79 +2056,215 @@
             }
 
             clearAllData() {
-                const confirmed = confirm(
-                    '⚠️ WARNING ⚠️\n\n' +
-                    'This will permanently delete ALL your sessions and settings.\n\n' +
-                    'This action CANNOT be undone!\n\n' +
-                    'Consider exporting your data first.\n\n' +
-                    'Are you absolutely sure?'
-                );
-
-                if (confirmed) {
-                    const doubleCheck = confirm('Last chance! Delete everything?');
-                    
-                    if (doubleCheck) {
-                        localStorage.removeItem('tacticalStopwatch');
-                        localStorage.removeItem('stopwatchSettings');
-                        this.sessions = [];
-                        this.updateStats();
-                        this.renderSessions();
-                        this.loadSettings();
-                        this.showNotification('All data cleared.');
-                    }
+                if (confirm('Are you sure you want to clear all data? This cannot be undone.')) {
+                    localStorage.removeItem('tacticalStopwatch');
+                    localStorage.removeItem('stopwatchSettings');
+                    this.sessions = [];
+                    this.updateStats();
+                    this.renderSessions();
+                    this.showNotification('All data cleared successfully!');
                 }
             }
 
-            // Advanced Session Features
-            captureLocation(sessionId) {
-                if (!navigator.geolocation) {
-                    this.showNotification('Geolocation is not supported by your browser');
-                    return;
-                }
-
-                navigator.geolocation.getCurrentPosition(
-                    (position) => {
-                        const session = this.sessions.find(s => s.id === sessionId);
-                        if (session) {
-                            session.location = {
-                                latitude: position.coords.latitude,
-                                longitude: position.coords.longitude,
-                                accuracy: position.coords.accuracy,
-                                altitude: position.coords.altitude,
-                                speed: position.coords.speed,
-                                timestamp: new Date().toISOString()
-                            };
-                            
-                            // Try to get address using reverse geocoding (simplified)
-                            this.reverseGeocode(position.coords.latitude, position.coords.longitude, sessionId);
-                            
-                            this.saveData();
-                            this.openSessionModal(sessionId); // Refresh modal
-                            this.showNotification('Location captured successfully!');
-                        }
-                    },
-                    (error) => {
-                        this.showNotification('Unable to capture location: ' + error.message);
-                    },
-                    {
-                        enableHighAccuracy: true,
-                        timeout: 10000,
-                        maximumAge: 0
+            async captureLocation(sessionId) {
+                try {
+                    const location = await locationServices.captureLocation();
+                    const session = this.sessions.find(s => s.id === sessionId);
+                    if (session) {
+                        session.location = location;
+                        this.saveData();
+                        this.openSessionModal(sessionId);
+                        this.showNotification('Location captured successfully');
                     }
-                );
+                } catch (error) {
+                    this.showNotification('Failed to capture location: ' + error);
+                }
             }
 
-            reverseGeocode(lat, lon, sessionId) {
-                // Simplified reverse geocoding - in production you'd use a real API
+            updateSessionName(sessionId, newName) {
                 const session = this.sessions.find(s => s.id === sessionId);
-                if (session && session.location) {
-                    // Generate a mock address based on coordinates
-                    const areas = ['Downtown', 'Midtown', 'Uptown', 'Westside', 'Eastside', 'North District', 'South Quarter'];
-                    const cities = ['Metro City', 'Capital Heights', 'Tech Valley', 'Innovation District'];
-                    
-                    session.location.address = `${areas[Math.floor(Math.random() * areas.length)]}, ${cities[Math.floor(Math.random() * cities.length)]}`;
+                if (session) {
+                    session.name = newName;
+                    this.saveData();
+                    this.renderSessions();
+                }
+            }
+
+            saveSessionNotes(sessionId, notes) {
+                const session = this.sessions.find(s => s.id === sessionId);
+                if (session) {
+                    session.notes = notes;
                     this.saveData();
                 }
+            }
+
+            addTag(sessionId, tag) {
+                if (!tag.trim()) return;
+                const session = this.sessions.find(s => s.id === sessionId);
+                if (session) {
+                    if (!session.tags) session.tags = [];
+                    if (!session.tags.includes(tag.trim())) {
+                        session.tags.push(tag.trim());
+                        this.saveData();
+                        this.openSessionModal(sessionId);
+                    }
+                }
+            }
+
+            removeTag(sessionId, tag) {
+                const session = this.sessions.find(s => s.id === sessionId);
+                if (session && session.tags) {
+                    session.tags = session.tags.filter(t => t !== tag);
+                    this.saveData();
+                    this.openSessionModal(sessionId);
+                }
+            }
+
+            archiveSession(sessionId) {
+                const session = this.sessions.find(s => s.id === sessionId);
+                if (session) {
+                    session.archived = !session.archived;
+                    this.saveData();
+                    this.renderSessions();
+                    this.closeSessionModal();
+                    this.showNotification(session.archived ? 'Session archived' : 'Session unarchived');
+                }
+            }
+
+            exportSession(sessionId) {
+                const session = this.sessions.find(s => s.id === sessionId);
+                if (session) {
+                    const dataStr = JSON.stringify(session, null, 2);
+                    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+                    const exportFileDefaultName = `session_${session.id}.json`;
+                    
+                    const linkElement = document.createElement('a');
+                    linkElement.setAttribute('href', dataUri);
+                    linkElement.setAttribute('download', exportFileDefaultName);
+                    linkElement.click();
+                    
+                    this.showNotification('Session exported successfully');
+                }
+            }
+
+            duplicateSession(sessionId) {
+                const session = this.sessions.find(s => s.id === sessionId);
+                if (session) {
+                    const duplicate = {
+                        ...session,
+                        id: Date.now(),
+                        name: session.name + ' (Copy)',
+                        date: new Date().toISOString()
+                    };
+                    this.sessions.push(duplicate);
+                    this.saveData();
+                    this.renderSessions();
+                    this.showNotification('Session duplicated');
+                }
+            }
+
+            mergeWithNext(sessionId) {
+                const sessionIndex = this.sessions.findIndex(s => s.id === sessionId);
+                if (sessionIndex >= 0 && sessionIndex < this.sessions.length - 1) {
+                    const currentSession = this.sessions[sessionIndex];
+                    const nextSession = this.sessions[sessionIndex + 1];
+                    
+                    currentSession.duration += nextSession.duration;
+                    currentSession.name = `${currentSession.name} + ${nextSession.name}`;
+                    
+                    this.sessions.splice(sessionIndex + 1, 1);
+                    this.saveData();
+                    this.renderSessions();
+                    this.openSessionModal(sessionId);
+                    this.showNotification('Sessions merged successfully');
+                }
+            }
+
+            splitSession(sessionId) {
+                const session = this.sessions.find(s => s.id === sessionId);
+                if (session && session.duration > 60000) { // Only split if > 1 minute
+                    const halfDuration = Math.floor(session.duration / 2);
+                    
+                    const newSession = {
+                        ...session,
+                        id: Date.now(),
+                        name: session.name + ' (Part 2)',
+                        duration: session.duration - halfDuration
+                    };
+                    
+                    session.duration = halfDuration;
+                    session.name = session.name + ' (Part 1)';
+                    
+                    this.sessions.push(newSession);
+                    this.saveData();
+                    this.renderSessions();
+                    this.openSessionModal(sessionId);
+                    this.showNotification('Session split successfully');
+                }
+            }
+
+            generateReport(sessionId) {
+                const session = this.sessions.find(s => s.id === sessionId);
+                if (session) {
+                    const report = `
+TACTICAL STOPWATCH SESSION REPORT
+==================================
+Session ID: ${session.id}
+Operator: ${session.operator}
+Task: ${session.name}
+Date: ${new Date(session.date).toLocaleString()}
+Duration: ${this.formatTime(session.duration)}
+
+${session.location ? `Location:
+  Latitude: ${session.location.latitude}°
+  Longitude: ${session.location.longitude}°
+  Address: ${session.location.address || 'N/A'}
+` : 'Location: Not recorded'}
+
+${session.performanceScores ? `Performance Scores:
+  Overall: ${session.performanceScores.overall}% (Grade: ${session.performanceScores.grade})
+  Efficiency: ${session.performanceScores.efficiency}%
+  Focus: ${session.performanceScores.focus}%
+  Stamina: ${session.performanceScores.stamina}%
+` : 'Performance: Not analyzed'}
+
+${session.metrics ? `Metrics:
+  Task Complexity: ${session.metrics.complexity}/10
+  Focus Level: ${session.metrics.focus}/10
+  Interruptions: ${session.metrics.interruptions}
+  Tasks Completed: ${session.metrics.tasksCompleted}
+  Category: ${session.metrics.category}
+  Energy: ${session.metrics.energyStart} → ${session.metrics.energyEnd}
+` : 'Metrics: Not collected'}
+
+${session.notes ? `Notes: ${session.notes}` : 'Notes: None'}
+${session.tags && session.tags.length > 0 ? `Tags: ${session.tags.join(', ')}` : 'Tags: None'}
+                    `.trim();
+                    
+                    const dataUri = 'data:text/plain;charset=utf-8,'+ encodeURIComponent(report);
+                    const exportFileDefaultName = `report_${session.id}.txt`;
+                    
+                    const linkElement = document.createElement('a');
+                    linkElement.setAttribute('href', dataUri);
+                    linkElement.setAttribute('download', exportFileDefaultName);
+                    linkElement.click();
+                    
+                    this.showNotification('Report generated successfully');
+                }
+            }
+
+            getWeatherIcon(condition) {
+                if (!condition) return '🌤️';
+                const cond = condition.toLowerCase();
+                
+                if (cond.includes('clear')) return '☀️';
+                if (cond.includes('cloud') || cond.includes('overcast')) return '☁️';
+                if (cond.includes('rain') || cond.includes('drizzle') || cond.includes('shower')) return '🌧️';
+                if (cond.includes('thunder')) return '⛈️';
+                if (cond.includes('snow')) return '❄️';
+                if (cond.includes('fog')) return '🌫️';
+                
+                return '🌤️';
             }
 
             addWeatherData(sessionId) {
@@ -2020,325 +2286,22 @@
                 }
             }
 
-            getWeatherIcon(condition) {
-                const icons = {
-                    'Clear': '☀️',
-                    'Sunny': '☀️',
-                    'Partly Cloudy': '⛅',
-                    'Cloudy': '☁️',
-                    'Rainy': '🌧️',
-                    'Foggy': '🌫️',
-                    'Stormy': '⛈️',
-                    'Snowy': '❄️'
-                };
-                return icons[condition] || '🌤️';
-            }
-
-            saveSessionNotes(sessionId, notes) {
-                const session = this.sessions.find(s => s.id === sessionId);
-                if (session) {
-                    session.notes = notes;
-                    session.lastModified = new Date().toISOString();
-                    this.saveData();
-                    this.showNotification('Notes saved!');
-                }
-            }
-
-            addTag(sessionId, tag) {
-                if (!tag.trim()) return;
-                
-                const session = this.sessions.find(s => s.id === sessionId);
-                if (session) {
-                    if (!session.tags) session.tags = [];
-                    if (!session.tags.includes(tag.trim())) {
-                        session.tags.push(tag.trim());
-                        this.saveData();
-                        this.openSessionModal(sessionId);
-                    }
-                }
-            }
-
-            removeTag(sessionId, tag) {
-                const session = this.sessions.find(s => s.id === sessionId);
-                if (session && session.tags) {
-                    session.tags = session.tags.filter(t => t !== tag);
-                    this.saveData();
-                    this.openSessionModal(sessionId);
-                }
-            }
-
-            exportSession(sessionId) {
-                const session = this.sessions.find(s => s.id === sessionId);
-                if (!session) return;
-
-                const exportData = {
-                    session: session,
-                    metadata: {
-                        exportDate: new Date().toISOString(),
-                        version: '2.0',
-                        type: 'single_session'
-                    }
-                };
-
-                const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `session-${session.name.replace(/\s+/g, '-')}-${session.id}.json`;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-
-                this.showNotification('Session exported successfully!');
-            }
-
-            duplicateSession(sessionId) {
-                const session = this.sessions.find(s => s.id === sessionId);
-                if (!session) return;
-
-                const duplicate = {
-                    ...session,
-                    id: Date.now(),
-                    name: session.name + ' (Copy)',
-                    date: new Date().toISOString(),
-                    duplicatedFrom: sessionId
-                };
-
-                this.sessions.push(duplicate);
-                this.saveData();
-                this.updateStats();
-                this.renderSessions();
-                this.showNotification('Session duplicated!');
-                this.closeSessionModal();
-            }
-
-            mergeWithNext(sessionId) {
-                const index = this.sessions.findIndex(s => s.id === sessionId);
-                if (index === -1 || index === this.sessions.length - 1) {
-                    this.showNotification('No next session to merge with');
-                    return;
-                }
-
-                const currentSession = this.sessions[index];
-                const nextSession = this.sessions[index + 1];
-
-                if (confirm(`Merge "${currentSession.name}" with "${nextSession.name}"?`)) {
-                    currentSession.duration += nextSession.duration;
-                    currentSession.name = `${currentSession.name} + ${nextSession.name}`;
-                    if (nextSession.notes) {
-                        currentSession.notes = (currentSession.notes || '') + '\n\n--- Merged Session ---\n' + nextSession.notes;
-                    }
-                    if (nextSession.tags) {
-                        currentSession.tags = [...new Set([...(currentSession.tags || []), ...nextSession.tags])];
-                    }
-
-                    this.sessions.splice(index + 1, 1);
-                    this.saveData();
-                    this.updateStats();
-                    this.renderSessions();
-                    this.openSessionModal(sessionId);
-                    this.showNotification('Sessions merged successfully!');
-                }
-            }
-
-            splitSession(sessionId) {
-                const session = this.sessions.find(s => s.id === sessionId);
-                if (!session) return;
-
-                const splitPoint = prompt('Enter split percentage (e.g., 50 for 50/50 split):');
-                if (!splitPoint) return;
-
-                const percentage = parseInt(splitPoint);
-                if (isNaN(percentage) || percentage <= 0 || percentage >= 100) {
-                    this.showNotification('Invalid percentage. Please enter a value between 1 and 99.');
-                    return;
-                }
-
-                const firstDuration = Math.floor(session.duration * (percentage / 100));
-                const secondDuration = session.duration - firstDuration;
-
-                const firstSession = {
-                    ...session,
-                    id: session.id,
-                    name: session.name + ' (Part 1)',
-                    duration: firstDuration
-                };
-
-                const secondSession = {
-                    ...session,
-                    id: Date.now(),
-                    name: session.name + ' (Part 2)',
-                    duration: secondDuration,
-                    date: new Date(new Date(session.date).getTime() + firstDuration).toISOString()
-                };
-
-                const index = this.sessions.findIndex(s => s.id === sessionId);
-                this.sessions[index] = firstSession;
-                this.sessions.splice(index + 1, 0, secondSession);
-
-                this.saveData();
-                this.updateStats();
-                this.renderSessions();
-                this.closeSessionModal();
-                this.showNotification('Session split successfully!');
-            }
-
-            generateReport(sessionId) {
-                const session = this.sessions.find(s => s.id === sessionId);
-                if (!session) return;
-
-                const analytics = this.calculateSessionAnalytics(session);
-                
-                const report = `
-TACTICAL STOPWATCH - SESSION REPORT
-====================================
-
-SESSION: ${session.name}
-DATE: ${new Date(session.date).toLocaleString()}
-DURATION: ${this.formatTime(session.duration)}
-
-ANALYTICS
----------
-Average Pace: ${analytics.avgPace}
-Productivity Score: ${analytics.productivityScore}%
-Time of Day: ${analytics.timeOfDay}
-Session Rank: #${analytics.rank}
-
-${session.location ? `
-LOCATION
---------
-Latitude: ${session.location.latitude.toFixed(6)}°
-Longitude: ${session.location.longitude.toFixed(6)}°
-${session.location.address ? `Address: ${session.location.address}` : ''}
-${session.location.altitude ? `Altitude: ${session.location.altitude.toFixed(2)}m` : ''}
-` : ''}
-
-${session.weather ? `
-ENVIRONMENT
------------
-Temperature: ${session.weather.temp}°${session.weather.unit || 'C'}
-Condition: ${session.weather.condition}
-Humidity: ${session.weather.humidity}%
-Wind Speed: ${session.weather.windSpeed} km/h
-Pressure: ${session.weather.pressure} hPa
-` : ''}
-
-${session.notes ? `
-NOTES
------
-${session.notes}
-` : ''}
-
-${session.tags && session.tags.length > 0 ? `
-TAGS
-----
-${session.tags.join(', ')}
-` : ''}
-
-====================================
-Generated: ${new Date().toLocaleString()}
-                `.trim();
-
-                const blob = new Blob([report], { type: 'text/plain' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `report-${session.name.replace(/\s+/g, '-')}-${session.id}.txt`;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-
-                this.showNotification('Report generated and downloaded!');
-            }
-
-            archiveSession(sessionId) {
-                const session = this.sessions.find(s => s.id === sessionId);
-                if (!session) return;
-
-                if (confirm(`Archive "${session.name}"? Archived sessions won't appear in the main list.`)) {
-                    session.archived = true;
-                    session.archivedDate = new Date().toISOString();
-                    this.saveData();
-                    this.updateStats();
-                    this.renderSessions();
-                    this.closeSessionModal();
-                    this.showNotification('Session archived!');
-                }
-            }
-
-            initializeMap(sessionId, locationData) {
-                // Placeholder for map initialization
-                // In production, you would integrate with a mapping library like Leaflet or Mapbox
-                const mapContainer = document.getElementById(`map-${sessionId}`);
-                if (mapContainer) {
-                    // Add visual grid overlay to simulate tactical map
-                    mapContainer.innerHTML = `
-                        <div style="position: relative; width: 100%; height: 100%; background: linear-gradient(0deg, rgba(70,130,180,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(70,130,180,0.05) 1px, transparent 1px); background-size: 20px 20px;">
-                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
-                                <div style="font-size: 2em;">📍</div>
-                                <div style="color: #7a96b0; font-family: 'Roboto Mono', monospace; font-size: 0.8em; margin-top: 10px;">
-                                    ${locationData.latitude.toFixed(4)}°, ${locationData.longitude.toFixed(4)}°
-                                </div>
-                                ${locationData.address ? `<div style="color: #5a6c7e; font-size: 0.75em; margin-top: 5px;">${locationData.address}</div>` : ''}
-                            </div>
-                        </div>
-                    `;
-                }
-            }
-
-            // New methods for filtering and session management
-            updateSessionName(sessionId, newName) {
-                const session = this.sessions.find(s => s.id === sessionId);
-                if (session && newName.trim()) {
-                    session.name = newName.trim();
-                    session.lastModified = new Date().toISOString();
-                    this.saveData();
-                    this.renderSessions();
-                    this.showNotification('Session name updated!');
-                }
-            }
-
             updateOperatorFilter() {
+                const operatorFilter = document.getElementById('operatorFilter');
+                if (!operatorFilter) return;
+                
+                // Get unique operators from sessions
                 const operators = [...new Set(this.sessions.map(s => s.operator).filter(Boolean))];
-                const filterSelect = document.getElementById('filterOperator');
-                if (filterSelect) {
-                    filterSelect.innerHTML = '<option value="">All Operators</option>' + 
-                        operators.map(op => `<option value="${op}">${op}</option>`).join('');
-                }
-            }
-
-            applyFilters() {
-                this.filters = {
-                    operator: document.getElementById('filterOperator').value,
-                    date: document.getElementById('filterDate').value,
-                    tags: document.getElementById('filterTags').value,
-                    search: document.getElementById('filterSearch').value
-                };
-                this.renderSessions();
-            }
-
-            clearFilters() {
-                document.getElementById('filterOperator').value = '';
-                document.getElementById('filterDate').value = '';
-                document.getElementById('filterTags').value = '';
-                document.getElementById('filterSearch').value = '';
-                this.filters = {};
-                this.renderSessions();
-            }
-
-            toggleArchived() {
-                this.showArchived = !this.showArchived;
-                const btn = event.target;
-                btn.textContent = this.showArchived ? 'SHOW ACTIVE' : 'SHOW ARCHIVED';
-                this.renderSessions();
+                
+                // Update filter options
+                operatorFilter.innerHTML = '<option value="">All Operators</option>' +
+                    operators.map(op => `<option value="${op}">${op}</option>`).join('');
             }
         }
 
         // Initialize app
         const app = new TacticalStopwatch();
-
+        
         // Request notification permission
         if ('Notification' in window && Notification.permission === 'default') {
             Notification.requestPermission();
