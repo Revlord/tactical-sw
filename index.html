@@ -967,11 +967,14 @@
 
             .tabs {
                 padding: 0 20px;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
             }
 
             .tab {
                 padding: 16px 20px;
                 font-size: 0.75em;
+                white-space: nowrap;
             }
 
             .stat-card {
@@ -990,6 +993,231 @@
             
             button {
                 width: 100%;
+            }
+
+            /* Sessions Section Mobile Styles */
+            .session-filters {
+                padding: 20px 15px !important;
+            }
+
+            .session-filters > div:first-child {
+                grid-template-columns: 1fr !important;
+                gap: 15px !important;
+            }
+
+            .session-filters > div:last-child {
+                flex-direction: column;
+                gap: 10px;
+                align-items: stretch !important;
+            }
+
+            .session-filters button {
+                width: 100%;
+                padding: 12px 20px !important;
+            }
+
+            .session-filters #sessionCount {
+                margin-left: 0 !important;
+                text-align: center;
+                padding: 8px 0;
+            }
+
+            .session-list {
+                max-height: none;
+                padding-right: 0;
+            }
+
+            .session-item {
+                padding: 18px 20px;
+                margin-bottom: 8px;
+            }
+
+            .session-item::after {
+                right: 20px;
+                font-size: 0.7em;
+            }
+
+            .session-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .session-name {
+                font-size: 1em;
+                padding-right: 30px;
+            }
+
+            .session-duration {
+                font-size: 1.4em;
+            }
+
+            .session-date {
+                font-size: 0.75em;
+            }
+
+            /* Modal Mobile Styles */
+            .session-modal {
+                padding: 0;
+            }
+
+            .modal-content {
+                margin: 0;
+                max-width: 100%;
+                min-height: 100vh;
+                border: none;
+            }
+
+            .modal-header {
+                padding: 20px;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .modal-title {
+                font-size: 1.1em;
+                flex: 1 1 100%;
+            }
+
+            .modal-close {
+                flex: 1 1 100%;
+                padding: 10px 20px;
+            }
+
+            .session-details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-section {
+                padding: 20px;
+                border-right: none !important;
+            }
+
+            .detail-section:not(:last-child) {
+                border-bottom: 1px solid rgba(40, 80, 120, 0.15) !important;
+            }
+
+            .detail-value {
+                font-size: 1.5em;
+            }
+
+            .map-container {
+                height: 250px;
+            }
+
+            .analytics-panel {
+                padding: 20px;
+            }
+
+            .analytics-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .actions-panel {
+                padding: 20px;
+                flex-direction: column;
+            }
+
+            .action-btn {
+                width: 100%;
+                padding: 14px 24px;
+            }
+
+            .notes-section {
+                padding: 20px;
+            }
+
+            .notes-input {
+                min-height: 120px;
+            }
+
+            .tags-container {
+                gap: 6px;
+            }
+
+            .tag {
+                font-size: 0.7em;
+                padding: 5px 10px;
+            }
+
+            .weather-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .empty-state {
+                padding: 60px 20px;
+            }
+
+            .empty-state-icon {
+                font-size: 2.5em;
+            }
+
+            .notification {
+                top: 15px;
+                right: 15px;
+                left: 15px;
+                max-width: none;
+                padding: 15px 20px;
+                font-size: 0.85em;
+            }
+
+            .settings-section {
+                margin-bottom: 40px;
+            }
+
+            .settings-section h3 {
+                font-size: 0.8em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.2em;
+            }
+
+            .header .tagline {
+                font-size: 0.55em;
+            }
+
+            .stopwatch-display {
+                font-size: 2.5em;
+                margin: 30px 0;
+            }
+
+            .stat-value {
+                font-size: 1.8em;
+            }
+
+            .stat-label {
+                font-size: 0.6em;
+            }
+
+            .tab {
+                padding: 14px 16px;
+                font-size: 0.7em;
+            }
+
+            .session-item {
+                padding: 15px 18px;
+            }
+
+            .session-duration {
+                font-size: 1.2em;
+            }
+
+            .detail-value {
+                font-size: 1.3em;
+            }
+
+            .modal-title {
+                font-size: 1em;
+            }
+
+            .metric-value {
+                font-size: 1.4em;
             }
         }
     </style>
