@@ -446,6 +446,19 @@
             margin-bottom: 10px;
             border-radius: 0;
             transition: all 0.2s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .session-item::after {
+            content: '▶';
+            position: absolute;
+            right: 28px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #4a5c6e;
+            font-size: 0.8em;
+            transition: all 0.2s ease;
         }
 
         .session-item:hover {
@@ -453,6 +466,347 @@
             border-left-color: rgba(70, 130, 180, 0.6);
             border-color: rgba(40, 80, 120, 0.2);
             transform: translateX(3px);
+        }
+
+        .session-item:hover::after {
+            color: #7a8a99;
+            transform: translateY(-50%) translateX(3px);
+        }
+
+        /* Advanced Session Modal */
+        .session-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            animation: fadeIn 0.2s ease;
+            overflow-y: auto;
+        }
+
+        .session-modal.active {
+            display: block;
+        }
+
+        .modal-content {
+            max-width: 1200px;
+            margin: 40px auto;
+            background: linear-gradient(180deg, rgba(8, 18, 28, 0.98) 0%, rgba(5, 12, 20, 0.95) 100%);
+            border: 1px solid rgba(40, 80, 120, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(70, 130, 180, 0.1);
+            position: relative;
+        }
+
+        .modal-header {
+            padding: 30px 40px;
+            background: linear-gradient(180deg, rgba(10, 20, 30, 0.9) 0%, rgba(8, 18, 28, 0.8) 100%);
+            border-bottom: 1px solid rgba(40, 80, 120, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 1.4em;
+            color: #c5d1de;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .modal-title .status-indicator {
+            width: 8px;
+            height: 8px;
+            background: #4682b4;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(70, 130, 180, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .modal-close {
+            background: transparent;
+            border: 1px solid rgba(180, 70, 70, 0.3);
+            color: #b08080;
+            padding: 8px 20px;
+            font-size: 0.75em;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            border-color: rgba(180, 70, 70, 0.5);
+            background: rgba(60, 30, 30, 0.3);
+        }
+
+        .modal-body {
+            padding: 0;
+        }
+
+        .session-details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .detail-section {
+            padding: 30px 40px;
+            border-right: 1px solid rgba(40, 80, 120, 0.15);
+            border-bottom: 1px solid rgba(40, 80, 120, 0.15);
+        }
+
+        .detail-section:nth-child(even) {
+            border-right: none;
+        }
+
+        .detail-section:nth-last-child(-n+2) {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 0.7em;
+            color: #4a5c6e;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 3px;
+            height: 12px;
+            background: #4682b4;
+            display: inline-block;
+        }
+
+        .detail-value {
+            font-size: 1.8em;
+            color: #8fa8c0;
+            font-weight: 300;
+            margin-bottom: 8px;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .detail-subtitle {
+            font-size: 0.85em;
+            color: #5a6c7e;
+        }
+
+        /* Location Map */
+        .map-container {
+            height: 300px;
+            background: rgba(5, 12, 20, 0.8);
+            border: 1px solid rgba(40, 80, 120, 0.2);
+            margin-top: 15px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .map-placeholder {
+            text-align: center;
+            color: #4a5c6e;
+        }
+
+        .coordinates-display {
+            font-family: 'Roboto Mono', monospace;
+            color: #7a96b0;
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+
+        /* Analytics Section */
+        .analytics-panel {
+            padding: 40px;
+            background: rgba(5, 12, 20, 0.5);
+            border-top: 1px solid rgba(40, 80, 120, 0.15);
+        }
+
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 25px;
+        }
+
+        .metric-card {
+            background: rgba(10, 20, 30, 0.4);
+            padding: 20px;
+            border: 1px solid rgba(40, 80, 120, 0.15);
+            border-left: 3px solid #4682b4;
+            transition: all 0.2s ease;
+        }
+
+        .metric-card:hover {
+            background: rgba(15, 25, 35, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .metric-label {
+            font-size: 0.65em;
+            color: #4a5c6e;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        .metric-value {
+            font-size: 1.6em;
+            color: #8fa8c0;
+            font-weight: 300;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        /* Action Buttons Panel */
+        .actions-panel {
+            padding: 30px 40px;
+            background: rgba(8, 18, 28, 0.6);
+            border-top: 1px solid rgba(40, 80, 120, 0.15);
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 12px 24px;
+            background: rgba(20, 35, 50, 0.7);
+            border: 1px solid rgba(40, 80, 120, 0.3);
+            color: #7a8a99;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .action-btn:hover {
+            background: rgba(30, 45, 60, 0.8);
+            border-color: rgba(70, 130, 180, 0.5);
+            color: #a8c5e0;
+        }
+
+        .action-btn.primary {
+            background: linear-gradient(180deg, rgba(70, 130, 180, 0.3) 0%, rgba(50, 110, 160, 0.35) 100%);
+            border-color: rgba(70, 130, 180, 0.5);
+            color: #a8c5e0;
+        }
+
+        .action-btn.danger {
+            border-color: rgba(180, 70, 70, 0.3);
+            color: #b08080;
+        }
+
+        /* Notes Section */
+        .notes-section {
+            padding: 30px 40px;
+            background: rgba(5, 12, 20, 0.4);
+            border-top: 1px solid rgba(40, 80, 120, 0.15);
+        }
+
+        .notes-input {
+            width: 100%;
+            min-height: 150px;
+            background: rgba(10, 20, 30, 0.6);
+            border: 1px solid rgba(40, 80, 120, 0.2);
+            color: #8fa8c0;
+            padding: 15px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9em;
+            resize: vertical;
+        }
+
+        .notes-input:focus {
+            outline: none;
+            border-color: rgba(70, 130, 180, 0.4);
+            background: rgba(15, 25, 35, 0.7);
+        }
+
+        /* Tags System */
+        .tags-container {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .tag {
+            padding: 6px 12px;
+            background: rgba(70, 130, 180, 0.15);
+            border: 1px solid rgba(70, 130, 180, 0.3);
+            color: #8fa8c0;
+            font-size: 0.75em;
+            border-radius: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tag-remove {
+            cursor: pointer;
+            color: #b08080;
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+        .tag-remove:hover {
+            color: #d09090;
+        }
+
+        .tag-input {
+            padding: 6px 12px;
+            background: rgba(10, 20, 30, 0.5);
+            border: 1px solid rgba(40, 80, 120, 0.2);
+            color: #8fa8c0;
+            font-size: 0.75em;
+            min-width: 120px;
+        }
+
+        /* Weather Info */
+        .weather-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(10, 20, 30, 0.3);
+            border: 1px solid rgba(40, 80, 120, 0.15);
+        }
+
+        .weather-icon {
+            font-size: 2em;
+        }
+
+        .weather-details {
+            flex: 1;
+        }
+
+        .weather-temp {
+            font-size: 1.4em;
+            color: #8fa8c0;
+            font-weight: 300;
+        }
+
+        .weather-desc {
+            font-size: 0.85em;
+            color: #5a6c7e;
+            text-transform: capitalize;
         }
 
         .session-header {
@@ -669,6 +1023,11 @@
 
         <div id="stopwatch" class="tab-content active">
             <div class="input-group">
+                <label for="operatorName">Operator Name <span style="color: #b08080; font-size: 0.9em;">(Required - Immutable)</span></label>
+                <input type="text" id="operatorName" placeholder="Enter operator name..." style="border-color: rgba(180, 70, 70, 0.2);">
+            </div>
+            
+            <div class="input-group">
                 <label for="taskName">Task Name</label>
                 <input type="text" id="taskName" placeholder="Enter task name...">
             </div>
@@ -683,6 +1042,34 @@
         </div>
 
         <div id="sessions" class="tab-content">
+            <div class="session-filters" style="padding: 25px 30px; background: rgba(5, 12, 20, 0.6); border-bottom: 1px solid rgba(40, 80, 120, 0.15);">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                    <div>
+                        <label style="display: block; font-size: 0.65em; color: #4a5c6e; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; font-weight: 600;">OPERATOR</label>
+                        <select id="filterOperator" style="width: 100%; padding: 10px; background: rgba(10, 20, 30, 0.5); border: 1px solid rgba(40, 80, 120, 0.2); color: #8fa8c0; font-size: 0.9em;">
+                            <option value="">All Operators</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 0.65em; color: #4a5c6e; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; font-weight: 600;">DATE RANGE</label>
+                        <input type="date" id="filterDate" style="width: 100%; padding: 10px; background: rgba(10, 20, 30, 0.5); border: 1px solid rgba(40, 80, 120, 0.2); color: #8fa8c0; font-size: 0.9em;">
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 0.65em; color: #4a5c6e; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; font-weight: 600;">TAGS</label>
+                        <input type="text" id="filterTags" placeholder="Enter tags..." style="width: 100%; padding: 10px; background: rgba(10, 20, 30, 0.5); border: 1px solid rgba(40, 80, 120, 0.2); color: #8fa8c0; font-size: 0.9em;">
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 0.65em; color: #4a5c6e; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; font-weight: 600;">SEARCH</label>
+                        <input type="text" id="filterSearch" placeholder="Search sessions..." style="width: 100%; padding: 10px; background: rgba(10, 20, 30, 0.5); border: 1px solid rgba(40, 80, 120, 0.2); color: #8fa8c0; font-size: 0.9em;">
+                    </div>
+                </div>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <button onclick="app.applyFilters()" style="padding: 10px 20px; background: rgba(70, 130, 180, 0.2); border: 1px solid rgba(70, 130, 180, 0.3); color: #8fa8c0; font-size: 0.75em; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer;">APPLY FILTERS</button>
+                    <button onclick="app.clearFilters()" style="padding: 10px 20px; background: rgba(20, 35, 50, 0.6); border: 1px solid rgba(40, 80, 120, 0.2); color: #7a8a99; font-size: 0.75em; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer;">CLEAR</button>
+                    <button onclick="app.toggleArchived()" style="padding: 10px 20px; background: rgba(20, 35, 50, 0.6); border: 1px solid rgba(40, 80, 120, 0.2); color: #7a8a99; font-size: 0.75em; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer;">SHOW ARCHIVED</button>
+                    <span style="margin-left: auto; color: #5a6c7e; font-size: 0.8em;" id="sessionCount">0 sessions</span>
+                </div>
+            </div>
             <div class="session-list" id="sessionList">
                 <div class="empty-state">
                     <div class="empty-state-icon">•</div>
@@ -758,10 +1145,12 @@
                 this.updateStats();
                 this.renderSessions();
                 this.loadSettings();
+                this.updateOperatorFilter();
             }
 
             initializeElements() {
                 this.display = document.getElementById('display');
+                this.operatorNameInput = document.getElementById('operatorName');
                 this.taskNameInput = document.getElementById('taskName');
                 this.startBtn = document.getElementById('startBtn');
                 this.stopBtn = document.getElementById('stopBtn');
@@ -769,6 +1158,8 @@
                 this.sessionList = document.getElementById('sessionList');
                 this.totalSessionsEl = document.getElementById('totalSessions');
                 this.totalTimeEl = document.getElementById('totalTime');
+                this.showArchived = false;
+                this.filters = {};
             }
 
             attachEventListeners() {
@@ -804,6 +1195,17 @@
 
             start() {
                 if (!this.isRunning) {
+                    // Check if operator name is provided
+                    if (!this.operatorNameInput.value.trim()) {
+                        this.showNotification('Operator name is required!');
+                        this.operatorNameInput.style.borderColor = 'rgba(180, 70, 70, 0.5)';
+                        this.operatorNameInput.focus();
+                        return;
+                    }
+                    
+                    // Disable operator name input once session starts
+                    this.operatorNameInput.disabled = true;
+                    
                     this.startTime = Date.now() - this.elapsedTime;
                     this.timerInterval = setInterval(() => this.updateDisplay(), 10);
                     this.isRunning = true;
@@ -838,6 +1240,10 @@
                 this.startBtn.disabled = false;
                 this.display.textContent = '00:00:00.00';
                 this.stopNotifications();
+                
+                // Re-enable operator name input
+                this.operatorNameInput.disabled = false;
+                this.operatorNameInput.style.borderColor = 'rgba(180, 70, 70, 0.2)';
             }
 
             updateDisplay() {
@@ -860,18 +1266,22 @@
 
                 const session = {
                     id: Date.now(),
+                    operator: this.operatorNameInput.value.trim(),
                     name: this.taskNameInput.value || 'Unnamed Task',
                     duration: this.elapsedTime,
-                    date: new Date().toISOString()
+                    date: new Date().toISOString(),
+                    archived: false
                 };
 
                 this.sessions.push(session);
                 this.saveData();
                 this.updateStats();
                 this.renderSessions();
+                this.updateOperatorFilter();
                 
                 // Reset for next session
                 this.reset();
+                this.operatorNameInput.value = '';
                 this.taskNameInput.value = '';
             }
 
@@ -883,28 +1293,259 @@
             }
 
             renderSessions() {
-                if (this.sessions.length === 0) {
+                // Apply filters
+                let filteredSessions = this.sessions.filter(s => {
+                    // Archive filter
+                    if (!this.showArchived && s.archived) return false;
+                    if (this.showArchived && !s.archived) return false;
+                    
+                    // Operator filter
+                    if (this.filters.operator && s.operator !== this.filters.operator) return false;
+                    
+                    // Date filter
+                    if (this.filters.date) {
+                        const sessionDate = new Date(s.date).toDateString();
+                        const filterDate = new Date(this.filters.date).toDateString();
+                        if (sessionDate !== filterDate) return false;
+                    }
+                    
+                    // Tag filter
+                    if (this.filters.tags) {
+                        const filterTags = this.filters.tags.toLowerCase().split(',').map(t => t.trim()).filter(t => t);
+                        if (filterTags.length > 0) {
+                            if (!s.tags || s.tags.length === 0) return false;
+                            const hasTag = filterTags.some(tag => 
+                                s.tags.some(t => t.toLowerCase().includes(tag))
+                            );
+                            if (!hasTag) return false;
+                        }
+                    }
+                    
+                    // Search filter
+                    if (this.filters.search) {
+                        const search = this.filters.search.toLowerCase();
+                        const inName = s.name.toLowerCase().includes(search);
+                        const inOperator = s.operator && s.operator.toLowerCase().includes(search);
+                        const inNotes = s.notes && s.notes.toLowerCase().includes(search);
+                        if (!inName && !inOperator && !inNotes) return false;
+                    }
+                    
+                    return true;
+                });
+                
+                // Update session count
+                const countEl = document.getElementById('sessionCount');
+                if (countEl) {
+                    countEl.textContent = `${filteredSessions.length} session${filteredSessions.length !== 1 ? 's' : ''}`;
+                }
+                
+                if (filteredSessions.length === 0) {
                     this.sessionList.innerHTML = `
                         <div class="empty-state">
                             <div class="empty-state-icon">•</div>
-                            <div>No sessions recorded yet. Start timing to create your first session!</div>
+                            <div>${this.showArchived ? 'No archived sessions found.' : 'No sessions match your filters.'}</div>
                         </div>
                     `;
                     return;
                 }
 
-                this.sessionList.innerHTML = this.sessions
+                this.sessionList.innerHTML = filteredSessions
                     .sort((a, b) => b.date.localeCompare(a.date))
                     .map(session => `
-                        <div class="session-item">
+                        <div class="session-item" onclick="app.openSessionModal(${session.id})">
                             <div class="session-header">
-                                <div class="session-name">${session.name}</div>
-                                <button class="delete-btn" onclick="app.deleteSession(${session.id})">Delete</button>
+                                <div>
+                                    <div class="session-name">${session.name}</div>
+                                    <div style="font-size: 0.75em; color: #4a5c6e; margin-top: 4px;">Operator: ${session.operator || 'Unknown'}</div>
+                                </div>
+                                <button class="delete-btn" onclick="event.stopPropagation(); app.deleteSession(${session.id})">Delete</button>
                             </div>
                             <div class="session-duration">${this.formatTime(session.duration)}</div>
                             <div class="session-date">${new Date(session.date).toLocaleString()}</div>
+                            ${session.archived ? '<div style="font-size: 0.7em; color: #b08080; margin-top: 5px;">[ARCHIVED]</div>' : ''}
                         </div>
                     `).join('');
+            }
+
+            openSessionModal(sessionId) {
+                const session = this.sessions.find(s => s.id === sessionId);
+                if (!session) return;
+
+                // Create or update modal
+                let modal = document.getElementById('sessionModal');
+                if (!modal) {
+                    modal = document.createElement('div');
+                    modal.id = 'sessionModal';
+                    modal.className = 'session-modal';
+                    document.body.appendChild(modal);
+                }
+
+                // Calculate analytics
+                const analytics = this.calculateSessionAnalytics(session);
+                const locationData = session.location || {};
+                const weatherData = session.weather || {};
+                const notes = session.notes || '';
+                const tags = session.tags || [];
+
+                modal.innerHTML = `
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="modal-title">
+                                <span class="status-indicator"></span>
+                                <input type="text" id="sessionNameEdit" value="${session.name}" 
+                                    style="background: transparent; border: 1px solid transparent; color: #c5d1de; font-size: 1em; font-weight: 300; padding: 4px 8px; border-radius: 0;"
+                                    onblur="app.updateSessionName(${sessionId}, this.value)"
+                                    onfocus="this.style.borderColor='rgba(70, 130, 180, 0.3)'"
+                                    onmouseleave="this.style.borderColor='transparent'">
+                            </div>
+                            <button class="modal-close" onclick="app.closeSessionModal()">CLOSE</button>
+                        </div>
+                        
+                        <div class="modal-body">
+                            <div class="session-details-grid">
+                                <div class="detail-section">
+                                    <div class="section-title">OPERATOR</div>
+                                    <div class="detail-value" style="font-size: 1.4em;">${session.operator || 'Unknown'}</div>
+                                    <div class="detail-subtitle">Session Operator (Immutable)</div>
+                                </div>
+                                
+                                <div class="detail-section">
+                                    <div class="section-title">DURATION</div>
+                                    <div class="detail-value">${this.formatTime(session.duration)}</div>
+                                    <div class="detail-subtitle">Total Time Tracked</div>
+                                </div>
+                                
+                                <div class="detail-section">
+                                    <div class="section-title">START TIME</div>
+                                    <div class="detail-value">${new Date(session.date).toLocaleTimeString()}</div>
+                                    <div class="detail-subtitle">${new Date(session.date).toLocaleDateString()}</div>
+                                </div>
+                                
+                                <div class="detail-section" style="grid-column: span 2;">
+                                    <div class="section-title">LOCATION</div>
+                                    ${locationData.latitude ? `
+                                        <div class="coordinates-display">
+                                            LAT: ${locationData.latitude.toFixed(6)}°<br>
+                                            LON: ${locationData.longitude.toFixed(6)}°
+                                        </div>
+                                        <div class="detail-subtitle">${locationData.address || 'Coordinates captured'}</div>
+                                        <div class="map-container" id="map-${sessionId}">
+                                            <div class="map-placeholder">
+                                                📍 Map View<br>
+                                                <small style="color: #3a4a5a;">Location tracked at session start</small>
+                                            </div>
+                                        </div>
+                                    ` : `
+                                        <button class="action-btn" onclick="app.captureLocation(${sessionId})">CAPTURE LOCATION</button>
+                                        <div class="detail-subtitle" style="margin-top: 10px;">No location data available</div>
+                                    `}
+                                </div>
+                                
+                                <div class="detail-section">
+                                    <div class="section-title">ENVIRONMENT</div>
+                                    ${weatherData.temp ? `
+                                        <div class="weather-info">
+                                            <div class="weather-icon">${this.getWeatherIcon(weatherData.condition)}</div>
+                                            <div class="weather-details">
+                                                <div class="weather-temp">${weatherData.temp}°${weatherData.unit || 'C'}</div>
+                                                <div class="weather-desc">${weatherData.condition || 'Clear'}</div>
+                                            </div>
+                                        </div>
+                                    ` : `
+                                        <button class="action-btn" onclick="app.addWeatherData(${sessionId})">ADD WEATHER</button>
+                                        <div class="detail-subtitle" style="margin-top: 10px;">No weather data recorded</div>
+                                    `}
+                                </div>
+                            </div>
+                            
+                            <div class="analytics-panel">
+                                <div class="section-title">PERFORMANCE ANALYTICS</div>
+                                <div class="analytics-grid">
+                                    <div class="metric-card">
+                                        <div class="metric-label">Average Pace</div>
+                                        <div class="metric-value">${analytics.avgPace}</div>
+                                    </div>
+                                    <div class="metric-card">
+                                        <div class="metric-label">Productivity Score</div>
+                                        <div class="metric-value">${analytics.productivityScore}%</div>
+                                    </div>
+                                    <div class="metric-card">
+                                        <div class="metric-label">Time of Day</div>
+                                        <div class="metric-value">${analytics.timeOfDay}</div>
+                                    </div>
+                                    <div class="metric-card">
+                                        <div class="metric-label">Session Rank</div>
+                                        <div class="metric-value">#${analytics.rank}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="notes-section">
+                                <div class="section-title">SESSION NOTES</div>
+                                <textarea class="notes-input" 
+                                    placeholder="Add detailed notes about this session..."
+                                    onblur="app.saveSessionNotes(${sessionId}, this.value)">${notes}</textarea>
+                                
+                                <div class="section-title" style="margin-top: 25px;">TAGS</div>
+                                <div class="tags-container" id="tags-${sessionId}">
+                                    ${tags.map(tag => `
+                                        <span class="tag">
+                                            ${tag}
+                                            <span class="tag-remove" onclick="app.removeTag(${sessionId}, '${tag}')">×</span>
+                                        </span>
+                                    `).join('')}
+                                    <input type="text" class="tag-input" 
+                                        placeholder="Add tag..." 
+                                        onkeypress="if(event.key==='Enter'){app.addTag(${sessionId}, this.value); this.value='';}"/>
+                                </div>
+                            </div>
+                            
+                            <div class="actions-panel">
+                                <button class="action-btn primary" onclick="app.exportSession(${sessionId})">EXPORT SESSION</button>
+                                <button class="action-btn" onclick="app.duplicateSession(${sessionId})">DUPLICATE</button>
+                                <button class="action-btn" onclick="app.mergeWithNext(${sessionId})">MERGE WITH NEXT</button>
+                                <button class="action-btn" onclick="app.splitSession(${sessionId})">SPLIT SESSION</button>
+                                <button class="action-btn" onclick="app.generateReport(${sessionId})">GENERATE REPORT</button>
+                                <button class="action-btn danger" onclick="app.archiveSession(${sessionId})">ARCHIVE</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                modal.classList.add('active');
+                
+                // Initialize map if location exists
+                if (locationData.latitude) {
+                    this.initializeMap(sessionId, locationData);
+                }
+            }
+
+            closeSessionModal() {
+                const modal = document.getElementById('sessionModal');
+                if (modal) {
+                    modal.classList.remove('active');
+                }
+            }
+
+            calculateSessionAnalytics(session) {
+                const allDurations = this.sessions.map(s => s.duration);
+                const avgDuration = allDurations.reduce((a, b) => a + b, 0) / allDurations.length;
+                const sessionHour = new Date(session.date).getHours();
+                
+                let timeOfDay = 'Night';
+                if (sessionHour >= 5 && sessionHour < 12) timeOfDay = 'Morning';
+                else if (sessionHour >= 12 && sessionHour < 17) timeOfDay = 'Afternoon';
+                else if (sessionHour >= 17 && sessionHour < 21) timeOfDay = 'Evening';
+                
+                const sortedSessions = [...this.sessions].sort((a, b) => b.duration - a.duration);
+                const rank = sortedSessions.findIndex(s => s.id === session.id) + 1;
+                
+                return {
+                    avgPace: this.formatTime(Math.floor(session.duration / 60000) * 60000).split('.')[0],
+                    productivityScore: Math.min(100, Math.round((session.duration / avgDuration) * 100)),
+                    timeOfDay,
+                    rank
+                };
             }
 
             updateStats() {
@@ -1043,6 +1684,7 @@
                         this.saveData();
                         this.updateStats();
                         this.renderSessions();
+                        this.updateOperatorFilter();
                         
                         this.showNotification(`Successfully imported ${data.sessions.length} session(s)!`);
                     } catch (error) {
@@ -1077,6 +1719,392 @@
                         this.showNotification('All data cleared.');
                     }
                 }
+            }
+
+            // Advanced Session Features
+            captureLocation(sessionId) {
+                if (!navigator.geolocation) {
+                    this.showNotification('Geolocation is not supported by your browser');
+                    return;
+                }
+
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const session = this.sessions.find(s => s.id === sessionId);
+                        if (session) {
+                            session.location = {
+                                latitude: position.coords.latitude,
+                                longitude: position.coords.longitude,
+                                accuracy: position.coords.accuracy,
+                                altitude: position.coords.altitude,
+                                speed: position.coords.speed,
+                                timestamp: new Date().toISOString()
+                            };
+                            
+                            // Try to get address using reverse geocoding (simplified)
+                            this.reverseGeocode(position.coords.latitude, position.coords.longitude, sessionId);
+                            
+                            this.saveData();
+                            this.openSessionModal(sessionId); // Refresh modal
+                            this.showNotification('Location captured successfully!');
+                        }
+                    },
+                    (error) => {
+                        this.showNotification('Unable to capture location: ' + error.message);
+                    },
+                    {
+                        enableHighAccuracy: true,
+                        timeout: 10000,
+                        maximumAge: 0
+                    }
+                );
+            }
+
+            reverseGeocode(lat, lon, sessionId) {
+                // Simplified reverse geocoding - in production you'd use a real API
+                const session = this.sessions.find(s => s.id === sessionId);
+                if (session && session.location) {
+                    // Generate a mock address based on coordinates
+                    const areas = ['Downtown', 'Midtown', 'Uptown', 'Westside', 'Eastside', 'North District', 'South Quarter'];
+                    const cities = ['Metro City', 'Capital Heights', 'Tech Valley', 'Innovation District'];
+                    
+                    session.location.address = `${areas[Math.floor(Math.random() * areas.length)]}, ${cities[Math.floor(Math.random() * cities.length)]}`;
+                    this.saveData();
+                }
+            }
+
+            addWeatherData(sessionId) {
+                const session = this.sessions.find(s => s.id === sessionId);
+                if (session) {
+                    // Simulate weather data - in production, use a weather API
+                    const conditions = ['Clear', 'Partly Cloudy', 'Cloudy', 'Rainy', 'Sunny', 'Foggy', 'Stormy'];
+                    session.weather = {
+                        temp: Math.floor(Math.random() * 30) + 10,
+                        condition: conditions[Math.floor(Math.random() * conditions.length)],
+                        humidity: Math.floor(Math.random() * 60) + 30,
+                        windSpeed: Math.floor(Math.random() * 20) + 5,
+                        pressure: Math.floor(Math.random() * 50) + 980,
+                        unit: 'C'
+                    };
+                    this.saveData();
+                    this.openSessionModal(sessionId);
+                    this.showNotification('Weather data added!');
+                }
+            }
+
+            getWeatherIcon(condition) {
+                const icons = {
+                    'Clear': '☀️',
+                    'Sunny': '☀️',
+                    'Partly Cloudy': '⛅',
+                    'Cloudy': '☁️',
+                    'Rainy': '🌧️',
+                    'Foggy': '🌫️',
+                    'Stormy': '⛈️',
+                    'Snowy': '❄️'
+                };
+                return icons[condition] || '🌤️';
+            }
+
+            saveSessionNotes(sessionId, notes) {
+                const session = this.sessions.find(s => s.id === sessionId);
+                if (session) {
+                    session.notes = notes;
+                    session.lastModified = new Date().toISOString();
+                    this.saveData();
+                    this.showNotification('Notes saved!');
+                }
+            }
+
+            addTag(sessionId, tag) {
+                if (!tag.trim()) return;
+                
+                const session = this.sessions.find(s => s.id === sessionId);
+                if (session) {
+                    if (!session.tags) session.tags = [];
+                    if (!session.tags.includes(tag.trim())) {
+                        session.tags.push(tag.trim());
+                        this.saveData();
+                        this.openSessionModal(sessionId);
+                    }
+                }
+            }
+
+            removeTag(sessionId, tag) {
+                const session = this.sessions.find(s => s.id === sessionId);
+                if (session && session.tags) {
+                    session.tags = session.tags.filter(t => t !== tag);
+                    this.saveData();
+                    this.openSessionModal(sessionId);
+                }
+            }
+
+            exportSession(sessionId) {
+                const session = this.sessions.find(s => s.id === sessionId);
+                if (!session) return;
+
+                const exportData = {
+                    session: session,
+                    metadata: {
+                        exportDate: new Date().toISOString(),
+                        version: '2.0',
+                        type: 'single_session'
+                    }
+                };
+
+                const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `session-${session.name.replace(/\s+/g, '-')}-${session.id}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                this.showNotification('Session exported successfully!');
+            }
+
+            duplicateSession(sessionId) {
+                const session = this.sessions.find(s => s.id === sessionId);
+                if (!session) return;
+
+                const duplicate = {
+                    ...session,
+                    id: Date.now(),
+                    name: session.name + ' (Copy)',
+                    date: new Date().toISOString(),
+                    duplicatedFrom: sessionId
+                };
+
+                this.sessions.push(duplicate);
+                this.saveData();
+                this.updateStats();
+                this.renderSessions();
+                this.showNotification('Session duplicated!');
+                this.closeSessionModal();
+            }
+
+            mergeWithNext(sessionId) {
+                const index = this.sessions.findIndex(s => s.id === sessionId);
+                if (index === -1 || index === this.sessions.length - 1) {
+                    this.showNotification('No next session to merge with');
+                    return;
+                }
+
+                const currentSession = this.sessions[index];
+                const nextSession = this.sessions[index + 1];
+
+                if (confirm(`Merge "${currentSession.name}" with "${nextSession.name}"?`)) {
+                    currentSession.duration += nextSession.duration;
+                    currentSession.name = `${currentSession.name} + ${nextSession.name}`;
+                    if (nextSession.notes) {
+                        currentSession.notes = (currentSession.notes || '') + '\n\n--- Merged Session ---\n' + nextSession.notes;
+                    }
+                    if (nextSession.tags) {
+                        currentSession.tags = [...new Set([...(currentSession.tags || []), ...nextSession.tags])];
+                    }
+
+                    this.sessions.splice(index + 1, 1);
+                    this.saveData();
+                    this.updateStats();
+                    this.renderSessions();
+                    this.openSessionModal(sessionId);
+                    this.showNotification('Sessions merged successfully!');
+                }
+            }
+
+            splitSession(sessionId) {
+                const session = this.sessions.find(s => s.id === sessionId);
+                if (!session) return;
+
+                const splitPoint = prompt('Enter split percentage (e.g., 50 for 50/50 split):');
+                if (!splitPoint) return;
+
+                const percentage = parseInt(splitPoint);
+                if (isNaN(percentage) || percentage <= 0 || percentage >= 100) {
+                    this.showNotification('Invalid percentage. Please enter a value between 1 and 99.');
+                    return;
+                }
+
+                const firstDuration = Math.floor(session.duration * (percentage / 100));
+                const secondDuration = session.duration - firstDuration;
+
+                const firstSession = {
+                    ...session,
+                    id: session.id,
+                    name: session.name + ' (Part 1)',
+                    duration: firstDuration
+                };
+
+                const secondSession = {
+                    ...session,
+                    id: Date.now(),
+                    name: session.name + ' (Part 2)',
+                    duration: secondDuration,
+                    date: new Date(new Date(session.date).getTime() + firstDuration).toISOString()
+                };
+
+                const index = this.sessions.findIndex(s => s.id === sessionId);
+                this.sessions[index] = firstSession;
+                this.sessions.splice(index + 1, 0, secondSession);
+
+                this.saveData();
+                this.updateStats();
+                this.renderSessions();
+                this.closeSessionModal();
+                this.showNotification('Session split successfully!');
+            }
+
+            generateReport(sessionId) {
+                const session = this.sessions.find(s => s.id === sessionId);
+                if (!session) return;
+
+                const analytics = this.calculateSessionAnalytics(session);
+                
+                const report = `
+TACTICAL STOPWATCH - SESSION REPORT
+====================================
+
+SESSION: ${session.name}
+DATE: ${new Date(session.date).toLocaleString()}
+DURATION: ${this.formatTime(session.duration)}
+
+ANALYTICS
+---------
+Average Pace: ${analytics.avgPace}
+Productivity Score: ${analytics.productivityScore}%
+Time of Day: ${analytics.timeOfDay}
+Session Rank: #${analytics.rank}
+
+${session.location ? `
+LOCATION
+--------
+Latitude: ${session.location.latitude.toFixed(6)}°
+Longitude: ${session.location.longitude.toFixed(6)}°
+${session.location.address ? `Address: ${session.location.address}` : ''}
+${session.location.altitude ? `Altitude: ${session.location.altitude.toFixed(2)}m` : ''}
+` : ''}
+
+${session.weather ? `
+ENVIRONMENT
+-----------
+Temperature: ${session.weather.temp}°${session.weather.unit || 'C'}
+Condition: ${session.weather.condition}
+Humidity: ${session.weather.humidity}%
+Wind Speed: ${session.weather.windSpeed} km/h
+Pressure: ${session.weather.pressure} hPa
+` : ''}
+
+${session.notes ? `
+NOTES
+-----
+${session.notes}
+` : ''}
+
+${session.tags && session.tags.length > 0 ? `
+TAGS
+----
+${session.tags.join(', ')}
+` : ''}
+
+====================================
+Generated: ${new Date().toLocaleString()}
+                `.trim();
+
+                const blob = new Blob([report], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `report-${session.name.replace(/\s+/g, '-')}-${session.id}.txt`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                this.showNotification('Report generated and downloaded!');
+            }
+
+            archiveSession(sessionId) {
+                const session = this.sessions.find(s => s.id === sessionId);
+                if (!session) return;
+
+                if (confirm(`Archive "${session.name}"? Archived sessions won't appear in the main list.`)) {
+                    session.archived = true;
+                    session.archivedDate = new Date().toISOString();
+                    this.saveData();
+                    this.updateStats();
+                    this.renderSessions();
+                    this.closeSessionModal();
+                    this.showNotification('Session archived!');
+                }
+            }
+
+            initializeMap(sessionId, locationData) {
+                // Placeholder for map initialization
+                // In production, you would integrate with a mapping library like Leaflet or Mapbox
+                const mapContainer = document.getElementById(`map-${sessionId}`);
+                if (mapContainer) {
+                    // Add visual grid overlay to simulate tactical map
+                    mapContainer.innerHTML = `
+                        <div style="position: relative; width: 100%; height: 100%; background: linear-gradient(0deg, rgba(70,130,180,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(70,130,180,0.05) 1px, transparent 1px); background-size: 20px 20px;">
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                                <div style="font-size: 2em;">📍</div>
+                                <div style="color: #7a96b0; font-family: 'Roboto Mono', monospace; font-size: 0.8em; margin-top: 10px;">
+                                    ${locationData.latitude.toFixed(4)}°, ${locationData.longitude.toFixed(4)}°
+                                </div>
+                                ${locationData.address ? `<div style="color: #5a6c7e; font-size: 0.75em; margin-top: 5px;">${locationData.address}</div>` : ''}
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            // New methods for filtering and session management
+            updateSessionName(sessionId, newName) {
+                const session = this.sessions.find(s => s.id === sessionId);
+                if (session && newName.trim()) {
+                    session.name = newName.trim();
+                    session.lastModified = new Date().toISOString();
+                    this.saveData();
+                    this.renderSessions();
+                    this.showNotification('Session name updated!');
+                }
+            }
+
+            updateOperatorFilter() {
+                const operators = [...new Set(this.sessions.map(s => s.operator).filter(Boolean))];
+                const filterSelect = document.getElementById('filterOperator');
+                if (filterSelect) {
+                    filterSelect.innerHTML = '<option value="">All Operators</option>' + 
+                        operators.map(op => `<option value="${op}">${op}</option>`).join('');
+                }
+            }
+
+            applyFilters() {
+                this.filters = {
+                    operator: document.getElementById('filterOperator').value,
+                    date: document.getElementById('filterDate').value,
+                    tags: document.getElementById('filterTags').value,
+                    search: document.getElementById('filterSearch').value
+                };
+                this.renderSessions();
+            }
+
+            clearFilters() {
+                document.getElementById('filterOperator').value = '';
+                document.getElementById('filterDate').value = '';
+                document.getElementById('filterTags').value = '';
+                document.getElementById('filterSearch').value = '';
+                this.filters = {};
+                this.renderSessions();
+            }
+
+            toggleArchived() {
+                this.showArchived = !this.showArchived;
+                const btn = event.target;
+                btn.textContent = this.showArchived ? 'SHOW ACTIVE' : 'SHOW ARCHIVED';
+                this.renderSessions();
             }
         }
 
